@@ -4,14 +4,12 @@ import java.util.List;
 public class Vector {
     List<Integer> components;
 
-    Vector()
-    {
+    Vector() {
         components = new ArrayList<>();
         components.add(0); // 0 vector
     }
 
-    Vector(String input)
-    {
+    Vector(String input) {
         components = new ArrayList<>();
 
         String[] nums = input.split(",");
@@ -28,5 +26,19 @@ public class Vector {
         if (components.isEmpty()) {
             components.add(0);
         }
+    }
+    
+    @Override
+    public String toString() {
+        String vectorString = "[";
+        
+        for (Integer component : components) {
+            vectorString += component + ", ";
+        }
+
+        vectorString = vectorString.substring(0, vectorString.length() - 2);
+        vectorString += "]";
+
+        return vectorString;
     }
 }

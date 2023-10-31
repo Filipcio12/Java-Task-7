@@ -1,4 +1,7 @@
 import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+import java.lang.Character;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,8 +23,35 @@ public class Main {
         }
 
         // An Array of fixed size which will contain lists of integers
-
+        List<Vector> vectors = new ArrayList<Vector>();
         Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
+
+        for (int i = 0; i < num; ++i) {
+            String input = scanner.nextLine();
+            String[] elemStrings = input.split(",");
+            
+            for (int j = 0; j < elemStrings.length; ++j) {
+                String elemString = "";
+
+                for (char c : elemStrings[j].toCharArray()) {
+                    if (Character.isDigit(c)) {
+                        elemString += c;
+                    }   
+                }
+
+                elemStrings[j] = elemString;
+            }
+
+            for (String elemString : elemStrings) {
+                Vector vector = new Vector(elemString);
+                vectors.add(vector);
+            }
+        }
+
+        scanner.close();
+
+        for (Vector vector : vectors) {
+            System.out.println(vector);
+        }
     }
 }
