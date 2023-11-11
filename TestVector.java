@@ -1,6 +1,4 @@
-import java.util.Scanner;
 import java.util.List;
-import java.util.ArrayList;
 
 public class TestVector {
     public static void main(String[] args) {
@@ -20,20 +18,11 @@ public class TestVector {
             System.out.println("You must input at least 2 vectors.");
             return;
         }
-
-        List<Vector> vectors = new ArrayList<Vector>();
-        Scanner scanner = new Scanner(System.in);
-
-        for (int i = 0; i < num; ++i) {
-            String input = scanner.nextLine();
-            Vector vector = new Vector(input);
-            vectors.add(vector);
+        try {
+            List<Vector> vectors = UserInput.inputVectors(num);
         }
-
-        scanner.close();
-
-        for (Vector vector : vectors) {
-            System.out.println(vector);
+        catch(DifferentVectorLengthsException ex) {
+            System.out.println("Vectors have different lengths!");
         }
     }
 }

@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Vector {
-    List<Integer> components;
+    private List<Integer> components;
 
     Vector() {
         components = new ArrayList<>();
@@ -37,5 +37,9 @@ public class Vector {
         vectorString += "]";
 
         return vectorString;
+    }
+
+    public int length() {
+        return components.size();
     }
 }
