@@ -1,9 +1,8 @@
 import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
-import java.lang.Character;
 
-public class Main {
+public class TestVector {
     public static void main(String[] args) {
         if (args.length != 1) {
             System.out.println("Args is the number of input vectors!");
@@ -17,12 +16,11 @@ public class Main {
         catch (NumberFormatException ex) {
             System.out.println("Failure parsing int.");
         }
-        if (num == 0) {
-            System.out.println("No vectors to read.");
+        if (num < 2) {
+            System.out.println("You must input at least 2 vectors.");
             return;
         }
 
-        // An Array of fixed size which will contain lists of integers
         List<Vector> vectors = new ArrayList<Vector>();
         Scanner scanner = new Scanner(System.in);
 

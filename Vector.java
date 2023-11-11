@@ -18,9 +18,7 @@ public class Vector {
                 int component = Integer.parseInt(num);
                 components.add(component);
             }
-            catch(NumberFormatException ex) {
-                System.out.println("Failure converting String to int");
-            }
+            catch(NumberFormatException ex) {}
         }
 
         if (components.isEmpty()) {
@@ -28,7 +26,6 @@ public class Vector {
         }
     }
     
-    @Override
     public String toString() {
         String vectorString = "[";
         
