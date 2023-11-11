@@ -18,7 +18,7 @@ public class Main {
             System.out.println("Failure parsing int.");
         }
         if (num == 0) {
-            System.out.println("Failure parsing int.");
+            System.out.println("No vectors to read.");
             return;
         }
 
@@ -28,24 +28,8 @@ public class Main {
 
         for (int i = 0; i < num; ++i) {
             String input = scanner.nextLine();
-            String[] elemStrings = input.split(",");
-            
-            for (int j = 0; j < elemStrings.length; ++j) {
-                String elemString = "";
-
-                for (char c : elemStrings[j].toCharArray()) {
-                    if (Character.isDigit(c)) {
-                        elemString += c;
-                    }   
-                }
-
-                elemStrings[j] = elemString;
-            }
-
-            for (String elemString : elemStrings) {
-                Vector vector = new Vector(elemString);
-                vectors.add(vector);
-            }
+            Vector vector = new Vector(input);
+            vectors.add(vector);
         }
 
         scanner.close();
