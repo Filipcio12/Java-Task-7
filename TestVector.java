@@ -22,9 +22,17 @@ public class TestVector {
         List<Vector> vectors = new ArrayList<Vector>();
         UserInput userInput = new UserInput();
         vectors = userInput.inputVectors(num);
-        for (Vector vector : vectors) {
-            System.out.println(vector);
+        Vector sum = vectors.get(0);
+        for (int i = 1; i < vectors.size(); ++i) {
+            try {
+                sum.add(vectors.get(i));
+            } catch(DifferentVectorLengthsException ex) {
+                System.out.println("Error");
+                userInput.close();
+                return;
+            }
         }
+        System.out.println(sum);
         userInput.close();
     }
 }

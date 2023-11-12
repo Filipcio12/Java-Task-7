@@ -42,4 +42,16 @@ public class Vector {
     public int length() {
         return components.size();
     }
+
+    public void add(Vector oVector) throws DifferentVectorLengthsException {
+        int size = components.size();
+        if (size != oVector.components.size()) {
+            throw new DifferentVectorLengthsException();
+        }
+
+        for (int i = 0; i < size; ++i) {
+            components.set(i, 
+            components.get(i) + oVector.components.get(i));
+        }
+    }
 }
