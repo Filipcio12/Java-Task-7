@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.ArrayList;
 
 public class TestVector {
     public static void main(String[] args) {
@@ -18,11 +19,12 @@ public class TestVector {
             System.out.println("You must input at least 2 vectors.");
             return;
         }
-        try {
-            List<Vector> vectors = UserInput.inputVectors(num);
+        List<Vector> vectors = new ArrayList<Vector>();
+        UserInput userInput = new UserInput();
+        vectors = userInput.inputVectors(num);
+        for (Vector vector : vectors) {
+            System.out.println(vector);
         }
-        catch(DifferentVectorLengthsException ex) {
-            System.out.println("Vectors have different lengths!");
-        }
+        userInput.close();
     }
 }
