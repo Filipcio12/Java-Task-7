@@ -19,20 +19,28 @@ public class TestVector {
             System.out.println("You must input at least 2 vectors.");
             return;
         }
-        List<Vector> vectors = new ArrayList<Vector>();
+
         UserInput userInput = new UserInput();
-        vectors = userInput.inputVectors(num);
-        Vector sum = vectors.get(0);
-        for (int i = 1; i < vectors.size(); ++i) {
-            try {
-                sum.add(vectors.get(i));
-            } catch(DifferentVectorLengthsException ex) {
-                System.out.println("Error");
-                userInput.close();
-                return;
-            }
-        }
-        System.out.println(sum);
+        Vector sum;
+        sum = userInput.inputVectorSum(num);
         userInput.close();
+        System.out.println(sum);
+        /*
+            List<Vector> vectors = new ArrayList<Vector>();
+            UserInput userInput = new UserInput();
+            vectors = userInput.inputVectors(num);
+            Vector sum = vectors.get(0);
+            for (int i = 1; i < vectors.size(); ++i) {
+                try {
+                    sum.add(vectors.get(i));
+                } catch(DifferentVectorLengthsException ex) {
+                    System.out.println("Error");
+                    userInput.close();
+                    return;
+                }
+            }
+            System.out.println(sum);
+            userInput.close();
+        */
     }
 }

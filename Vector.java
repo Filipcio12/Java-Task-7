@@ -44,12 +44,12 @@ public class Vector {
     }
 
     public void add(Vector oVector) throws DifferentVectorLengthsException {
-        int size = components.size();
-        if (size != oVector.components.size()) {
+        int length = length();
+        if (length != oVector.length()) {
             throw new DifferentVectorLengthsException();
         }
 
-        for (int i = 0; i < size; ++i) {
+        for (int i = 0; i < length; ++i) {
             components.set(i, 
             components.get(i) + oVector.components.get(i));
         }
