@@ -1,1 +1,1 @@
-public class DifferentVectorLengthsException extends Throwable {}
+public class DifferentVectorLengthsException extends Exception {}

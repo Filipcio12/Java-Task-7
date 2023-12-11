@@ -1,5 +1,4 @@
-import java.util.List;
-import java.util.ArrayList;
+import java.io.IOException;
 
 public class TestVector {
     public static void main(String[] args) {
@@ -11,8 +10,7 @@ public class TestVector {
         int num = 0;
         try {
             num = Integer.parseInt(args[0]);   
-        }
-        catch (NumberFormatException ex) {
+        } catch (NumberFormatException ex) {
             System.out.println("Failure parsing int.");
         }
         if (num < 2) {
@@ -24,23 +22,11 @@ public class TestVector {
         Vector sum;
         sum = userInput.inputVectorSum(num);
         userInput.close();
-        System.out.println(sum);
-        /*
-            List<Vector> vectors = new ArrayList<Vector>();
-            UserInput userInput = new UserInput();
-            vectors = userInput.inputVectors(num);
-            Vector sum = vectors.get(0);
-            for (int i = 1; i < vectors.size(); ++i) {
-                try {
-                    sum.add(vectors.get(i));
-                } catch(DifferentVectorLengthsException ex) {
-                    System.out.println("Error");
-                    userInput.close();
-                    return;
-                }
-            }
-            System.out.println(sum);
-            userInput.close();
-        */
+
+        try {
+            IO.writeFile("result.txt", sum);
+        } catch (IOException ex) {
+            System.out.println("\nError opening the file.");
+        } 
     }
 }
