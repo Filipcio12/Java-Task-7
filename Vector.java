@@ -6,7 +6,6 @@ public class Vector {
 
     Vector() {
         components = new ArrayList<>();
-        components.add(0); // 0 vector
     }
 
     Vector(String input) {
@@ -24,6 +23,14 @@ public class Vector {
         if (components.isEmpty()) {
             components.add(0);
         }
+    }
+
+    public Vector clone() {
+        Vector vector = new Vector();
+        for (int comp : components) {
+            vector.components.add(comp);
+        }
+        return vector;
     }
     
     public String toString() {
@@ -46,12 +53,29 @@ public class Vector {
     public void add(Vector oVector) throws DifferentVectorLengthsException {
         int length = length();
         if (length != oVector.length()) {
-            throw new DifferentVectorLengthsException();
+           throw new DifferentVectorLengthsException();
         }
 
         for (int i = 0; i < length; ++i) {
             components.set(i, 
             components.get(i) + oVector.components.get(i));
         }
+    }
+
+    public static Vector sumVectors(List<Vector> vectors) throws DifferentVectorLengthsException {
+        List<Integer> lengthList = new ArrayList<Integer>();
+        for (Vector v : vectors) {
+            lengthList.add(v.length());
+        }
+
+        Vector sum = vectors.get(0).clone();
+        for (int i = 1; i < vectors.size(); ++i) {
+            try {
+                sum.add(vectors.get(i));
+            } catch (DifferentVectorLengthsException ex) {
+                throw new DifferentVectorLengthsException("Vectors have different lengths.\n", lengthList);
+            }
+        }
+        return sum;
     }
 }

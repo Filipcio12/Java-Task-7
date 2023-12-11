@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.List;
 
 public class TestVector {
     public static void main(String[] args) {
@@ -20,9 +21,22 @@ public class TestVector {
 
         UserInput userInput = new UserInput();
         Vector sum;
-        sum = userInput.inputVectorSum(num);
+        while (true) {
+            try {
+                sum = Vector.sumVectors(userInput.inputVectors(num));
+                break;
+            } catch (DifferentVectorLengthsException ex) {
+                String msg = ex.getMessage();
+                List<Integer> lengthList = ex.getLengthList();
+                for (int i = 0; i < lengthList.size(); ++i) {
+                    msg += (i + 1) + " vector length is " + lengthList.get(i) + ".\n";
+                }
+                System.out.println(msg);
+            }
+        }
         userInput.close();
-
+        System.out.println(sum);
+        
         try {
             IO.writeFile("result.txt", sum);
         } catch (IOException ex) {

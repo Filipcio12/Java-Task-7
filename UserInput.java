@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
 
 public class UserInput {
     private Scanner scanner;
@@ -7,25 +9,14 @@ public class UserInput {
         scanner = new Scanner(System.in);
     }
 
-    public Vector inputVectorSum(int num) {
-        Vector sum;
-        
-        while (true) {
+    public List<Vector> inputVectors(int num) {
+        List<Vector> vectors = new ArrayList<Vector>();
+        for (int i = 0; i < num; ++i) {
             String input = scanner.nextLine();
-            sum = new Vector(input);
-            try {
-                for (int i = 0; i < (num - 1); ++i) {
-                    input = scanner.nextLine();
-                    Vector v = new Vector(input);
-                    sum.add(v);
-                }
-                break;
-            } catch(DifferentVectorLengthsException ex) {
-                System.out.println("Error");
-            }
+            Vector v = new Vector(input);
+            vectors.add(v);
         }
-        
-        return sum;
+        return vectors;
     }
 
     public void close() {
